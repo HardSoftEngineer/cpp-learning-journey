@@ -9,8 +9,16 @@ The repository is organized by topics and complexity levels. Early sections may 
 
 # Structure
 
+
 ## 00_basics
 
 Basic examples, language elements and initial development environment setup.
 
 - [`hello_world`](00_basics/hello_world) — the traditional first program
+
+
+## 01_build
+
+This section demonstrates C++ application building.  
+
+- [hello_cpp_build](01_build/hello_cpp_build/README.md) — minimal CMake project with `main.cpp`, build scripts and instructions.
