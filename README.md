@@ -1,4 +1,4 @@
-# cpp-learning-journey
+# C++ learning journey
 
 This repository documents my C++ learning journey, from revisiting core language fundamentals to building more efficient and production-oriented code.
 
