@@ -19,18 +19,20 @@ int main(int argc, char* argv[]) {
     
     // Init cli11
     CLI::App app{"App cli"};
-    app.add_option("-c,--confs", confs_path, "Path to confs file");
+    app.add_option("-c,--confs", confs_path, "Path to confs file")->required();
     app.add_option("-l,--location", location, "App location path");
     app.add_option("-m,--mode", mode, "App start mode");
     app.add_option("-i,--intvalue", intvalue, "App int value");
     app.add_option("-f,--floatvalue", floatvalue, "App float value");
     app.add_option("-b,--boolvalue", boolvalue, "App bool value");
 
-    // 
+    // Allowing unnecessary arguments
+    app.allow_extras();
+
     CLI11_PARSE(app, argc, argv);
     
     // 
-    std::cout << "\nParsed options:\n";
+    std::cout << "\n\nParsed options:\n";
     for (const auto& option : app.get_options()) {
         std::cout << "Option: " << option->get_name() << '\n';
         for (const auto& val : option->results()) {
@@ -39,7 +41,20 @@ int main(int argc, char* argv[]) {
     }
 
     // 
-    std::cout << "\nValue from app:\n";
+    std::cout << "\n\nChecking unknown arguments:\n";
+    auto extras = app.remaining();
+    if (!extras.empty()) {
+        std::cerr << "Warning: unknown arguments:";
+        for (auto& e : extras) std::cerr << " " << e;
+        std::cerr << '\n';
+    }
+
+    // 
+    std::cout << "\n\nReconstructed:\n";
+    std::cout << app.config_to_str(true, true) << '\n';
+
+    // 
+    std::cout << "\n\nValue from app:\n";
     std::cout << "Confs path: " << confs_path << '\n';
     std::cout << "Int value: " << intvalue << '\n';
     std::cout << "Float value: " << floatvalue << '\n';

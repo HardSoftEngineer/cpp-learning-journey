@@ -13,8 +13,8 @@ BUILD_TYPE="Release"
 
 echo "Start..."
 
-# echo "rm -rf $BUILD_DIR"
-# rm -rf "$BUILD_DIR"
+echo "rm -rf $BUILD_DIR"
+rm -rf "$BUILD_DIR"
 
 cmake -S "$ROOT_DIR" -B "$BUILD_DIR" \
   -DCMAKE_TOOLCHAIN_FILE="$VCPKG_DIR/scripts/buildsystems/vcpkg.cmake" \
