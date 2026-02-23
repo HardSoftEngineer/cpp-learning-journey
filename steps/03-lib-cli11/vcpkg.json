@@ -1,0 +1,7 @@
+{
+  "name": "confs-json-app",
+  "version": "1.0.0",
+  "dependencies": [
+    "cli11"
+  ]
+}
